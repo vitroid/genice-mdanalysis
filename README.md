@@ -1,14 +1,14 @@
-# [genice2-mdanalysis](https://github.com/vitroid/genice-svg/)
+# [genice2-mdanalysis](https://github.com/vitroid/genice-mdanalysis/)
 
 A [GenIce2](https://github.com/vitroid/GenIce) format plugin to make a Universe of MDAnalysis.
 
-version 0.1
+version 0.2
 
 ## Requirements
 
 
 * mdanalysis
-* genice2
+* GenIce2>=2.0rc5
 
 ## Installation from PyPI
 

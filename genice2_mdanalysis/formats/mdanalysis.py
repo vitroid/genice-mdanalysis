@@ -49,15 +49,24 @@ Options:
         logger.info("  Total number of atoms: {0}".format(len(ice.atoms)))
         
         n_atoms  = len(ice.atoms)
-        n_waters = ice.reppositions.shape[0]
-        atom_resindex = np.array([row[4] for row in ice.atoms])
+        atomnames = [row[2] for row in ice.atoms]
+        atom_resindex = []
+        resnames      = []
+        n_residues = 0
+        last=-1
+        for atom in ice.atoms:
+            if last != atom[4]:
+                n_residues += 1
+                last       =  atom[4]
+                resnames.append(atom[1])
+            atom_resindex.append(n_residues-1)
         universe = mda.Universe.empty(n_atoms=n_atoms,
-                                      n_residues=n_waters,
+                                      n_residues=n_residues,
                                       atom_resindex=atom_resindex,
                                       trajectory=True,)
-        universe.add_TopologyAttr('name', [row[2] for row in ice.atoms])
-        universe.add_TopologyAttr('type', ['O', 'H', 'H']*n_waters)
-        universe.add_TopologyAttr('resname', ["SOL"]*n_waters)
+        universe.add_TopologyAttr('name',    atomnames)
+        universe.add_TopologyAttr('type',    atomnames)
+        universe.add_TopologyAttr('resname', resnames)
         universe.atoms.positions = np.array([row[3] for row in ice.atoms])*10 # AA
         # cellは?
         universe.dimensions = cellshape(ice.repcell.mat*10)

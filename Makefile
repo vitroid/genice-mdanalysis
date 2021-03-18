@@ -7,6 +7,7 @@ all: README.md
 
 
 test: ice1c.pickle
+# Make a picked universe of MDAnalysis
 ice1c.pickle: $(BASE)/formats/mdanalysis.py Makefile
 	( cd $(BASE) && $(GENICE) 1c -r 2 2 2 -f mdanalysis --debug) > $@
 %.test:
