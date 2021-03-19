@@ -2,7 +2,7 @@
 
 A [GenIce2](https://github.com/vitroid/GenIce) format plugin to make a Universe of MDAnalysis.
 
-version 0.2
+version 0.3
 
 ## Requirements
 
