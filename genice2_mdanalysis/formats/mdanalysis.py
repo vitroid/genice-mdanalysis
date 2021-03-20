@@ -71,7 +71,6 @@ Options:
         resnames      = []
         n_residues = 0
         last=-1
-        logger.info(atoms)
         for atom in atoms:
             if last != atom[4]:
                 n_residues += 1
