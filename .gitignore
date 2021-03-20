@@ -126,3 +126,7 @@ dmypy.json
 formats
 
 *.pickle
+
+/*.xtc
+/*.pdb
+/*.gro

@@ -6,10 +6,14 @@ PACKAGE=genice2-mdanalysis
 all: README.md
 
 
-test: ice1c.pickle
+test: ice1c.pickle CS1.pdb.test
 # Make a picked universe of MDAnalysis
-ice1c.pickle: $(BASE)/formats/mdanalysis.py Makefile
+ice1c.pickle:   $(BASE)/formats/mdanalysis.py Makefile
 	( cd $(BASE) && $(GENICE) 1c -r 2 2 2 -f mdanalysis --debug) > $@
+CS1.pdb: $(BASE)/formats/mdanalysis.py Makefile
+	( cd $(BASE) && $(GENICE) CS1 -g 12=ch4 -g 14=thf*0.5+H2*0.5 -r 2 2 2 -w spce -f mdanalysis[../$@] )
+CS1_genice.gro: $(BASE)/formats/mdanalysis.py Makefile
+	( cd $(BASE) && $(GENICE) CS1 -g 12=ch4 -g 14=thf*0.5+H2*0.5 -r 2 2 2 -w spce -f g ) > $@
 %.test:
 	make $*
 	diff $* ref/$*
