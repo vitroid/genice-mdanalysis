@@ -48,6 +48,6 @@ deploy: build
 check:
 	./setup.py check
 clean:
-	-rm $(ALL) *~ */*~
+	-rm $(ALL) *~ */*~ *.pdb
 	-rm -rf build dist *.egg-info
 	-find . -name __pycache__ | xargs rm -rf

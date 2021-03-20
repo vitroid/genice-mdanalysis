@@ -39,7 +39,9 @@ setup(
             'mdanalysis = genice2_mdanalysis.formats.mdanalysis',
         ],
     },
-    install_requires=['mdanalysis', 'GenIce2>=2.1b0',],
+    install_requires=['GenIce2>=2.1b0',
+                      # 'mdanalysis',
+    ],
     # 2021-03-19 1.0.1 does not work with Apple M1
 
     license='MIT',
