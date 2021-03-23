@@ -2,12 +2,12 @@
 
 A [GenIce2](https://github.com/vitroid/GenIce) format plugin to make a Universe of MDAnalysis.
 
-version 0.6.2
+version 0.6.3
 
 ## Requirements
 
 
-* GenIce2>=2.1b0
+* GenIce2>=2.1b2
 
 The newest MDAnalysis is not available at PyPI. Follow the instructions below to install it.
 
@@ -15,12 +15,6 @@ The newest MDAnalysis is not available at PyPI. Follow the instructions below to
 % git clone https://github.com/MDAnalysis/MDAnalysis.git
 % cd MDAnalysis/package; ./setup.py install
 ```
-
-GenIce 2.1 is required. Follow the instruction below to install it.
-```shell
-% pip install git+https://github.com/vitroid/GenIce@universe
-```
-
 
 ## Installation from PyPI
 

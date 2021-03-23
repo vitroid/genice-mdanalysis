@@ -17,12 +17,6 @@ The newest MDAnalysis is not available at PyPI. Follow the instructions below to
 % cd MDAnalysis/package; ./setup.py install
 ```
 
-GenIce 2.1 is required. Follow the instruction below to install it.
-```shell
-% pip install git+https://github.com/vitroid/GenIce@universe
-```
-
-
 ## Installation from PyPI
 
 ```shell
