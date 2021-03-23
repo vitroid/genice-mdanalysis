@@ -128,3 +128,5 @@ dmypy.json
 /*.xtc
 /*.pdb
 /*.gro
+
+MDAnalysis/
