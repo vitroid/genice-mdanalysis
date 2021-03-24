@@ -40,9 +40,8 @@ setup(
         ],
     },
     install_requires=['GenIce2>=2.1b2',
-                      # 'mdanalysis',
+                      'MDAnalysis',     # You must install it from source when you install on an Apple M1.
     ],
-    # 2021-03-19 1.0.1 does not work with Apple M1
 
     license='MIT',
 )
