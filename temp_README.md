@@ -10,7 +10,9 @@ version {{version}}
 * {{i}}
 {%- endfor %}
 
-The newest MDAnalysis is not available at PyPI. Follow the instructions below to install it.
+### For Apple M1
+
+The newest MDAnalysis is required but is not available at PyPI. Follow the instructions below to install it.
 
 ```shell
 % git clone https://github.com/MDAnalysis/MDAnalysis.git
