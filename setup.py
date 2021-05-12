@@ -39,7 +39,7 @@ setup(
             'mdanalysis = genice2_mdanalysis.formats.mdanalysis',
         ],
     },
-    install_requires=['GenIce2>=2.1b2',
+    install_requires=['GenIce2>=2.1',
                       'MDAnalysis',     # You must install it from source when you install on an Apple M1.
     ],
 

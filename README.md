@@ -2,7 +2,7 @@
 
 A [GenIce2](https://github.com/vitroid/GenIce) format plugin to make a Universe of MDAnalysis.
 
-version 0.6.4
+version 0.6.5
 
 ## Requirements
 
@@ -46,8 +46,8 @@ Copy the files in genice2_mdanalysis/formats/ into your local formats/ folder.
 
     Options:
         filename  The file name to be written. The file type is specified by the
-                  suffix. All the [file types supported by MDAnalysis](https://docs.mdanalysis.org/stable/documentation_pages/coordinates/init.html) 
-                  are available. 
+                  suffix. All the supported file types are listed in the
+                  [MDAnalysis web page](https://docs.mdanalysis.org/stable/documentation_pages/coordinates/init.html#supported-coordinate-formats).
                   If the file name is not specified, the Universe instance of
                   MDAnalysis is written to the stdout in the python pickle
                   format.
