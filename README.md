@@ -1,23 +1,17 @@
-# [genice2-mdanalysis](https://github.com/vitroid/genice-mdanalysis/)
+![Logo](https://raw.githubusercontent.com/vitroid/GenIce/develop/logo/genice-v0.png)
 
-A [GenIce2](https://github.com/vitroid/GenIce) format plugin to make a Universe of MDAnalysis.
+# [genice2-mdanalysis](https://github.com/vitroid/genice-mdanalysis)
 
-version 0.6.5
+A  format plugin to make a Universe of MDAnalysis.
+
+version 0.7
 
 ## Requirements
 
+* python^3.9
+* GenIce2^2.2.5.2
+* MDAnalysis*
 
-* GenIce2>=2.1b2
-* MDAnalysis
-
-### For Apple M1
-
-The newest MDAnalysis is required but is not available at PyPI. Follow the instructions below to install it.
-
-```shell
-% git clone https://github.com/MDAnalysis/MDAnalysis.git
-% cd MDAnalysis/package; ./setup.py install
-```
 
 ## Installation from PyPI
 
@@ -25,20 +19,10 @@ The newest MDAnalysis is required but is not available at PyPI. Follow the instr
 % pip install genice2-mdanalysis
 ```
 
-## Manual Installation
-
-### System-wide installation
-
-```shell
-% make install
-```
-
-### Private installation
-
-Copy the files in genice2_mdanalysis/formats/ into your local formats/ folder.
-
 ## Usage
         
+    Write the ice structure in various file formats with the help of MDAnalysis.
+
     Usage:
         % genice 1c -f mdanalysis > 1c.pickle
         % genice 1c -f mdanalysis[1c.gro]
@@ -51,6 +35,8 @@ Copy the files in genice2_mdanalysis/formats/ into your local formats/ folder.
                   If the file name is not specified, the Universe instance of
                   MDAnalysis is written to the stdout in the python pickle
                   format.
+
+
 
 
 ## Test in place

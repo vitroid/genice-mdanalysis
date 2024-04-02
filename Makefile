@@ -1,52 +1,42 @@
 .DELETE_ON_ERROR:
 GENICE=genice2
-BASE=genice2_mdanalysis
-PACKAGE=genice2-mdanalysis
+BASENAME=genice2_mdanalysis
+PIPNAME=genice2-mdanalysis
 
 all: README.md
 
 
 test: ice1c.pickle CS1.pdb.test
 # Make a picked universe of MDAnalysis
-ice1c.pickle:   $(BASE)/formats/mdanalysis.py Makefile
-	( cd $(BASE) && $(GENICE) 1c -r 2 2 2 -f mdanalysis --debug) > $@
-CS1.pdb: $(BASE)/formats/mdanalysis.py Makefile
-	( cd $(BASE) && $(GENICE) CS1 -g 12=ch4 -g 14=thf*0.5+H2*0.5 -r 2 2 2 -w spce -f mdanalysis[../$@] --debug )
-CS1_genice.gro: $(BASE)/formats/mdanalysis.py Makefile
-	( cd $(BASE) && $(GENICE) CS1 -g 12=ch4 -g 14=thf*0.5+H2*0.5 -r 2 2 2 -w spce -f g ) > $@
+ice1c.pickle:   $(BASENAME)/formats/mdanalysis.py Makefile
+	( cd $(BASENAME) && $(GENICE) ice1c -r 2 2 2 -f mdanalysis --debug) > $@
+CS1.pdb: $(BASENAME)/formats/mdanalysis.py Makefile
+	( cd $(BASENAME) && $(GENICE) CS1 -g 12=ch4 -g 14=thf*0.5+H2*0.5 -r 2 2 2 -w spce -f mdanalysis[../$@] --debug )
+CS1_genice.gro: $(BASENAME)/formats/mdanalysis.py Makefile
+	( cd $(BASENAME) && $(GENICE) CS1 -g 12=ch4 -g 14=thf*0.5+H2*0.5 -r 2 2 2 -w spce -f g ) > $@
 %.test:
 	make $*
 	diff $* ref/$*
 
 
-%: temp_% replacer.py $(wildcard $(BASE)/lattices/*.py) $(wildcard $(BASE)/*.py)
-	pip install genice2_dev
-	python replacer.py < $< > $@
+%: temp_% replacer.py $(wildcard $(BASENAME)/formats/*.py) $(wildcard $(BASENAME)/*.py) pyproject.toml
+	python replacer.py $< > $@
 
 
-
-
-
-test-deploy: build
-	twine upload -r pypitest dist/*
+test-deploy:
+	poetry publish --build -r testpypi
 test-install:
-	pip install pillow
-	pip install --index-url https://test.pypi.org/simple/ $(PACKAGE)
-
-
-
-install:
-	python ./setup.py install
+	pip install --index-url https://test.pypi.org/simple/ $(PIPNAME)
 uninstall:
-	-pip uninstall -y $(PACKAGE)
-build: README.md $(wildcard $(BASE)/lattices/*.py) $(wildcard $(BASE)/*.py)
-	python ./setup.py sdist bdist_wheel
-
-
-deploy: build
-	twine upload dist/*
+	-pip uninstall -y $(PIPNAME)
+build: README.md $(wildcard genice2_mdanalysis/*.py)
+	poetry build
+deploy:
+	poetry publish --build
 check:
-	./setup.py check
+	poetry check
+
+
 clean:
 	-rm $(ALL) *~ */*~ *.pdb
 	-rm -rf build dist *.egg-info

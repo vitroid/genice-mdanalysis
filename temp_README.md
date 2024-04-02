@@ -1,4 +1,6 @@
-# [{{package}}]({{url}})
+![Logo]({{tool.genice.urls.logo}})
+
+# [{{project.name}}]({{project.urls.Homepage}})
 
 A {{genice}} format plugin to make a Universe of MDAnalysis.
 
@@ -6,42 +8,21 @@ version {{version}}
 
 ## Requirements
 
-{% for i in requires %}
-* {{i}}
-{%- endfor %}
-
-### For Apple M1
-
-The newest MDAnalysis is required but is not available at PyPI. Follow the instructions below to install it.
-
-```shell
-% git clone https://github.com/MDAnalysis/MDAnalysis.git
-% cd MDAnalysis/package; ./setup.py install
-```
+{% for item in tool.poetry.dependencies %}* {{item}}{{tool.poetry.dependencies[item]}}
+{% endfor %}
 
 ## Installation from PyPI
 
 ```shell
-% pip install {{package}}
+% pip install {{project.name}}
 ```
-
-## Manual Installation
-
-### System-wide installation
-
-```shell
-% make install
-```
-
-### Private installation
-
-Copy the files in {{base}}/formats/ into your local formats/ folder.
 
 ## Usage
 
 {%- filter indent %}
     {{usage}}
 {%- endfilter %}
+
 
 ## Test in place
 
